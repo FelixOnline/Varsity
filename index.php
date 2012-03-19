@@ -99,7 +99,6 @@
 
             <div class="row">
                 <div class="span8 feed">
-                    <p> feed </p>
                 </div>
                 <div class="span4 sidebar">
                     <p>Sidebar</p>
@@ -124,6 +123,10 @@
     <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="js/libs/template.js"></script>
+    <script src="js/templates/template.js"></script>
 
     <!-- scripts concatenated and minified via build script -->
     <script src="js/plugins.js"></script>
