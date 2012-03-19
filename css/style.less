@@ -217,27 +217,91 @@ td { vertical-align: top; }
    Author: J.Kim
    ========================================================================== */
 
+body {
+    font:13px/1.231 sans-serif; *font-size:small;
+	padding: 0;
+}
+
+#topBarCont {
+	/*background: #212119;*/
+	margin-bottom: 10px;
+    #topBar {
+        background: #CBCBCB;
+        color: #ffffff;
+        height: 25px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        .first {
+            margin-left: 7px;
+        }
+        .links {
+            ul {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                margin-top: 4px;
+                li {
+                    float: left;
+                    margin: 0;
+                    padding: 0;
+                    border-right: 1px solid #FFF;
+                    padding: 0 6px 0 5px;
+                    font-size: 13px;
+                    a {
+                        padding: 5px 8px 5px 4px;
+                        width: 100%;
+                        text-decoration: none;
+                        line-height: 0.5em;
+                        color: #fff;
+                        &:hover {
+                            text-decoration: underline;
+                            color: #333;
+                        }
+                        &.selected {
+                            color: #333;
+                            text-decoration: underline;
+                        }
+                    }
+                    &.last {
+                        border-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* $Header */
 header {
     .strapline {
         text-align: center;
         font-size: 15px;
+        p {
+            margin: 0px;
+        }
     }
     .line {
         border-top: 1px solid #444444;
-        margin-top: 26px;
+        margin-top: 10px;
     }
     .date p {
-        margin-top:80px;
         font-family:'Times New Roman', Times, serif;
         font-weight:bold;
         font-size:1.8em;
     }
     .logocont {
+        margin-top: 5px;
+        margin-bottom: 5px;
         a {
             text-decoration:none;
         }
         .logo {
-            margin: 0 auto;
+            h1 {
+                background: url('../img/title-300.jpg') center center no-repeat;
+                height: 94px;
+                text-indent: -9999px;
+                margin: 0px;
+            }
         }
     }
     .bigFelix  h1 {
@@ -249,9 +313,56 @@ header {
     .catPic img { float:right; }
 }
 
+/* $Main */
+#main {
+    #masthead {
+        padding: 0px 10px;
+        margin-top: 20px;
+        h2 {
+            font-size: 40px;
+            font-weight: normal;
+            letter-spacing: -1px;
+            margin: 0px;
+            margin-top: 10px;
+        }
+        .info {
+            margin-bottom: 10px;
+            p {
+                font-style: italic;
+            }
+        }
+    }
 
+    .feed {
 
+    }
 
+    .sidebar {
+
+    }
+}
+
+/* $Footer */
+footer {
+    .footerbg {
+        border-top: 3px solid #BEBEBE;
+        padding-top: 10px;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        background: #CBCBCB;
+    }
+    img {
+        margin-left: 5px;
+    }
+    .details {
+        p {
+            text-align: right;
+            color: #222;
+            font-size: 13px;
+            padding-right: 10px;
+        }
+    }
+}
 
 
 /* ============================== */
