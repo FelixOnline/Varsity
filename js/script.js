@@ -4,6 +4,20 @@
 
 var socket = io.connect('http://localhost:3000');
 var template = new Hogan.Template(T.post);
+socket.on('connect', function() {
+    $(function() {
+        var status = $('.clearfix #status');
+        status.text('Connected');
+    });
+});
+
+socket.on('disconnect', function() {
+    $(function() {
+        var status = $('.clearfix #status');
+        status.text('Disconnected');
+    });
+});
+
 socket.on('datastart', function(data) {
     $(function() {
         var posts = $('.feed').empty();

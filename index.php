@@ -98,8 +98,13 @@
             </div>
 
             <div class="row">
-                <div class="span8 feed">
+                <div class="span12 socket-info clearfix">
+                    <p id="update">Page updates automatically</p>
+                    <p id="status"></p>
                 </div>
+            </div>
+            <div class="row">
+                <div class="span8 feed"></div>
                 <div class="span4 sidebar">
                     <p>Sidebar</p>
                 </div>
