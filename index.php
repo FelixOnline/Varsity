@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="span8 feed"></div>
+                <div class="span8 feed loading"></div>
                 <div class="span4 sidebar">
                     <p>Sidebar</p>
                 </div>

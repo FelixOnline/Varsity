@@ -18,18 +18,13 @@ $output = array(
     'name' => $blog->getName()
 );
 
-foreach($blog->getPosts(1) as $key => $post) {
+foreach($blog->getPosts() as $key => $post) {
     $output['posts'][$key] = array(
+        'id' => $post->getId(),
         'content' => $post->getContent(),
         'timestamp' => $post->getTimestamp(),
         'type' => $post->getType(),
-        'meta' => $post->getMeta()
-    );
-    // TODO
-    $output['posts'][$key]['author'] = array(
-        'name' => $post->getAuthor()->getName(),
-        'uname' => $post->getAuthor()->getUser(),
-        'url' => $post->getAuthor()->getURL() 
+        'meta' => json_decode($post->getMeta())
     );
 }
 

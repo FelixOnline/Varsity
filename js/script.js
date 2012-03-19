@@ -3,11 +3,17 @@
 */
 
 var socket = io.connect('http://localhost:3000');
-var template = new Hogan.Template(T.post);
+
+var posts = {};
+
+$(function() {
+    window.socketstatus = $('.clearfix #status');
+    window.postscont = $('.feed');
+});
+
 socket.on('connect', function() {
     $(function() {
-        var status = $('.clearfix #status');
-        status
+        socketstatus
         .removeClass('disconnected')
         .addClass('connected')
         .text('Connected');
@@ -16,8 +22,7 @@ socket.on('connect', function() {
 
 socket.on('disconnect', function() {
     $(function() {
-        var status = $('.clearfix #status');
-        status
+        socketstatus
         .removeClass('connected')
         .addClass('disconnected')
         .text('Disconnected');
@@ -26,15 +31,27 @@ socket.on('disconnect', function() {
 
 socket.on('datastart', function(data) {
     $(function() {
-        var posts = $('.feed').empty();
+        postscont.removeClass('loading').empty();
         $.each(data.data.posts, function(index, post) {
-            var time = new Date(post.timestamp*1000);
-            post.time = time.getHours()+':'+time.getMinutes();
-            posts.append(template.render(post));
+            addPost(post);
         });
     });
 });
 
 socket.on('newpost', function(data) {
-    
+    // data.posts = array of all posts
+    // need to determine whether post is already displayed
+    $.each(data.posts, function(index, post) {
+        if(!posts[post.id]) {
+            addPost(post);
+        }
+    });
 });
+
+function addPost(post, animate) {
+    var time = new Date(post.timestamp*1000);
+    var template = new Hogan.Template(T.post);
+    post.time = time.getHours()+':'+time.getMinutes();
+    posts[post.id] = post;
+    postscont.append(template.render(post));
+}

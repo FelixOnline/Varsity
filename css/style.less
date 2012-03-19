@@ -341,7 +341,6 @@ header {
             margin: 0px;
         }
         #update {
-            /*float: left;*/
             padding-left: 20px;
             background: url('../img/refresh.png') 0px 0px no-repeat;
         }
@@ -354,13 +353,15 @@ header {
             &.disconnected {
                 background: url('../img/disconnected.png') 0px 0px no-repeat;
             }
-            /*float: right;*/
-            /*padding-right: 20px;*/
         }
     }
 
     .feed {
         margin-top: 20px;
+        min-height: 300px;
+        &.loading {
+            background: url('../img/ajax-loader.gif') center center no-repeat;
+        }
         .post {
             padding: 0px 10px;
             margin-bottom: 20px;
