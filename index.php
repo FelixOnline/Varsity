@@ -99,8 +99,8 @@
 
             <div class="row">
                 <div class="span12 socket-info clearfix">
-                    <p id="update">Page updates automatically</p>
                     <p id="status"></p>
+                    <p id="update">Page updates automatically</p>
                 </div>
             </div>
             <div class="row">

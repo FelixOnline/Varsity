@@ -7,14 +7,20 @@ var template = new Hogan.Template(T.post);
 socket.on('connect', function() {
     $(function() {
         var status = $('.clearfix #status');
-        status.text('Connected');
+        status
+        .removeClass('disconnected')
+        .addClass('connected')
+        .text('Connected');
     });
 });
 
 socket.on('disconnect', function() {
     $(function() {
         var status = $('.clearfix #status');
-        status.text('Disconnected');
+        status
+        .removeClass('connected')
+        .addClass('disconnected')
+        .text('Disconnected');
     });
 });
 
@@ -30,5 +36,5 @@ socket.on('datastart', function(data) {
 });
 
 socket.on('newpost', function(data) {
-
+    
 });

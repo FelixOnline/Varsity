@@ -282,7 +282,7 @@ header {
     }
     .line {
         border-top: 1px solid #444444;
-        margin-top: 10px;
+        margin-top: 8px;
     }
     .date p {
         font-family:'Times New Roman', Times, serif;
@@ -342,8 +342,18 @@ header {
         }
         #update {
             /*float: left;*/
+            padding-left: 20px;
+            background: url('../img/refresh.png') 0px 0px no-repeat;
         }
         #status {
+            padding-left: 20px;
+            margin-bottom: 5px;
+            &.connected {
+                background: url('../img/connected.png') 0px 0px no-repeat;
+            }
+            &.disconnected {
+                background: url('../img/disconnected.png') 0px 0px no-repeat;
+            }
             /*float: right;*/
             /*padding-right: 20px;*/
         }
@@ -355,7 +365,7 @@ header {
             padding: 0px 10px;
             margin-bottom: 20px;
             .time {
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: bold;
                 width: 70px;
                 float: left;
