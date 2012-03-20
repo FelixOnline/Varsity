@@ -2,20 +2,32 @@
 
 */
 
-var socket = io.connect('http://176.34.227.200:3000');
-//var socket = io.connect('http://localhost:3000');
+//var socket = io.connect('http://176.34.227.200:3000');
+var socket = io.connect('http://localhost:3000');
 
 var posts = {};
+
+var matches = {};
+var matchtemplate = new Hogan.Template(T.match);
 
 var template = {
     normal: new Hogan.Template(T.post),
     twitter: new Hogan.Template(T.posttwitter),
-    picture: new Hogan.Template(T.postpicture)
+    picture: new Hogan.Template(T.postpicture),
+    matchupdate: new Hogan.Template(T.matchupdate),
+    matchfinish: new Hogan.Template(T.matchfinish)
 }
 
 $(function() {
     window.socketstatus = $('.clearfix #status');
     window.postscont = $('.feed');
+    window.cache = {
+        match: {
+            current: $('.matchlist #current'),
+            coming: $('.matchlist #coming'),
+            finished: $('.matchlist #finished')
+        }
+    }
 });
 
 socket.on('connect', function() {
@@ -39,6 +51,14 @@ socket.on('disconnect', function() {
 socket.on('datastart', function(data) {
     $(function() {
         postscont.removeClass('loading').empty();
+        $.each(cache.match, function(index, section) {
+            section.empty();
+        });
+
+        $.each(data.data.matches, function(index, match) {
+            matches[match.id] = addMatch(match);
+        });
+
         $.each(data.data.posts.reverse(), function(index, post) {
             addPost(post);
         });
@@ -55,6 +75,13 @@ socket.on('newpost', function(data) {
     });
 });
 
+socket.on('matchupdate', function(data) {
+    console.log('matchupdate', data);
+    $.each(data.data.matches, function(index, match) {
+        changeMatch(match);
+    });
+});
+
 function addPost(post, animate) {
     var time = new Date(post.timestamp*1000);
     post.time = prefixNumber(time.getHours())+':'+prefixNumber(time.getMinutes());
@@ -62,6 +89,10 @@ function addPost(post, animate) {
     if(!post.type) {
         render = $(template.normal.render(post));
     } else {
+        if(post.type == 'matchupdate' || post.type == 'matchfinish') {
+            post.meta.team1 = matches[post.meta.match].team1;
+            post.meta.team2 = matches[post.meta.match].team2;
+        }
         render = $(template[post.type].render(post));
     }
     posts[post.id] = post;
@@ -70,6 +101,47 @@ function addPost(post, animate) {
         render.hide().fadeIn(600);
     } else {
         postscont.prepend(render);
+    }
+}
+
+function addMatch(match) {
+    var start = new Date(match.start*1000);
+    match.time = prefixNumber(start.getHours())+':'+prefixNumber(start.getMinutes());
+    var render = $(matchtemplate.render(match));
+    match.elm = render;
+    match.position = checkMatchTime(match);
+    cache.match[match.position].append(render);
+    return match;
+}
+
+function checkMatchTime(match) {
+    var start = new Date(match.start*1000);
+    if(
+        start.getTime() + (match.duration*60*1000) < Date.now()
+        || match.finished == 1
+    ) { // finished
+        return 'finished';
+    } else if(start.getTime() > Date.now()) { // coming up
+        return 'coming';
+    } else {
+        return 'current';
+    }
+}
+
+function changeMatch(match) {
+    if(matches[match.id]) {
+        var elm = matches[match.id].elm;
+        elm.find('.score1').text(match.score1);
+        elm.find('.score2').text(match.score2);
+        matches[match.id].score1 = match.score1;
+        matches[match.id].score2 = match.score2;
+        // movement
+        var position = checkMatchTime(match);
+        console.log(matches[match.id].position, matches[match.id], position);
+        if(position != matches[match.id].position) {
+            elm.hide().appendTo(cache.match[position]).fadeIn(600);
+            matches[match.id].position = postition;
+        }
     }
 }
 

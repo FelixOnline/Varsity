@@ -10,6 +10,7 @@ require_once('core/baseModel.class.php');
 require_once('core/user.class.php');
 require_once('core/blog.class.php');
 require_once('core/blogPost.class.php');
+require_once('core/match.class.php');
 
 define('BLOG_POSTS_PER_PAGE', 10);
 
@@ -25,6 +26,24 @@ foreach($blog->getPosts() as $key => $post) {
         'timestamp' => $post->getTimestamp(),
         'type' => $post->getType(),
         'meta' => json_decode($post->getMeta(), true)
+    );
+}
+
+$sql = "SELECT id FROM varsity ORDER BY start ASC";
+$matches = $db->get_results($sql);
+
+foreach($matches as $key => $object) {
+    $match = new Match($object->id);
+    $output['matches'][$key] = array(
+        'id' => $match->getId(),
+        'start' => $match->getStart(),
+        'team1' => $match->getTeam1(),
+        'team2' => $match->getTeam2(),
+        'score1' => $match->getScore1(),
+        'score2' => $match->getScore2(),
+        'duration' => $match->getDuration(),
+        'finished' => $match->getFinished(),
+        'location' => $match->getLocation()
     );
 }
 

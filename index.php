@@ -107,7 +107,14 @@
             <div class="row">
                 <div class="span8 feed loading"></div>
                 <div class="span4 sidebar">
-                    <p>Sidebar</p>
+                    <div class="matchlist">
+                        <h4>Current</h4>
+                        <div id="current"></div>
+                        <h4>Coming up</h4>
+                        <div id="coming"></div>
+                        <h4>Finished</h4>
+                        <div id="finished"></div>
+                    </div>
                 </div>
             </div>
         </div>
