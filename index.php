@@ -96,16 +96,14 @@
                         <div class="info">
                             <p>Varsity info</p>
                         </div>
+                        <div class="socket-info clearfix">
+                            <p id="status"></p>
+                            <p id="update">Page updates automatically</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="span12 socket-info clearfix">
-                    <p id="status"></p>
-                    <p id="update">Page updates automatically</p>
-                </div>
-            </div>
             <div class="row">
                 <div class="span8 feed loading"></div>
                 <div class="span4 sidebar">
