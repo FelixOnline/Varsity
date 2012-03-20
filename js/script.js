@@ -6,6 +6,12 @@ var socket = io.connect('http://localhost:3000');
 
 var posts = {};
 
+var template = {
+    normal: new Hogan.Template(T.post),
+    twitter: new Hogan.Template(T.posttwitter),
+    picture: new Hogan.Template(T.postpicture)
+}
+
 $(function() {
     window.socketstatus = $('.clearfix #status');
     window.postscont = $('.feed');
@@ -32,7 +38,7 @@ socket.on('disconnect', function() {
 socket.on('datastart', function(data) {
     $(function() {
         postscont.removeClass('loading').empty();
-        $.each(data.data.posts, function(index, post) {
+        $.each(data.data.posts.reverse(), function(index, post) {
             addPost(post);
         });
     });
@@ -41,17 +47,37 @@ socket.on('datastart', function(data) {
 socket.on('newpost', function(data) {
     // data.posts = array of all posts
     // need to determine whether post is already displayed
-    $.each(data.posts, function(index, post) {
+    $.each(data.data.posts.reverse(), function(index, post) {
         if(!posts[post.id]) {
-            addPost(post);
+            addPost(post, true);
         }
     });
 });
 
 function addPost(post, animate) {
     var time = new Date(post.timestamp*1000);
-    var template = new Hogan.Template(T.post);
-    post.time = time.getHours()+':'+time.getMinutes();
+    post.time = prefixNumber(time.getHours())+':'+prefixNumber(time.getMinutes());
+    var render;
+    if(!post.type) {
+        render = $(template.normal.render(post));
+    } else {
+        render = $(template[post.type].render(post));
+    }
     posts[post.id] = post;
-    postscont.append(template.render(post));
+    if(animate) {
+        postscont.prepend(render);
+        render.hide().fadeIn(600);
+    } else {
+        postscont.prepend(render);
+    }
+}
+
+/*
+ * If number is less than 10 then prefix with a 0
+ */
+function prefixNumber(number) {
+    if(number < 10) {
+        number = '0'+number;
+    }
+    return number;
 }
