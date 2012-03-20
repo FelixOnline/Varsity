@@ -307,21 +307,37 @@ header {
 
 /* $Main */
 #main {
+    #bg {
+        background: url('../img/scrumweb-1200.jpg') center -10px no-repeat;
+        height: 220px;
+        width: 100%;
+        margin-top: 20px;
+    }
     #masthead {
         padding: 0px 10px;
-        margin-top: 20px;
         border-bottom: 1px solid #BEBEBE;
         h2 {
-            font-size: 40px;
-            font-weight: normal;
-            letter-spacing: -1px;
-            margin: 0px;
-            margin-top: 10px;
+            text-indent: -9999px;
+            /*font-size: 40px;*/
+            /*font-weight: normal;*/
+            /*letter-spacing: -1px;*/
+            /*margin: 0px;*/
+            /*margin-top: 10px;*/
         }
         .info {
             margin-bottom: 10px;
             p {
                 font-style: italic;
+            }
+        }
+        .social-icons {
+            float: right;
+            #facebook {
+                width: 150px;
+                margin-top: 8px;
+            }
+            #twitter {
+                margin-top: 5px;
             }
         }
     }
@@ -349,6 +365,12 @@ header {
         }
     }
 
+    .sticky {
+        padding: 10px;
+        border-bottom: 1px solid #BEBEBE;
+        background: #F2F2F2;
+        font-size: 16px;
+    }
     .feed {
         margin-top: 20px;
         min-height: 300px;
@@ -379,7 +401,7 @@ header {
                 width: 50px;
                 background: url('../img/twitter_newbird_blue-50.png') center center no-repeat;
             }
-            &.matchupdate {
+            &.matchupdate, &.matchfinish {
                 .update {
                     margin-top: 5px;
                     font-style: italic;

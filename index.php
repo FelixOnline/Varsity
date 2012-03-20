@@ -1,5 +1,11 @@
 <?php
     define('STANDARD_URL', 'http://felixonline.local/');
+    require_once('inc/ez_sql_core.php');
+    require_once('inc/ez_sql_mysql.php');
+    require_once('inc/config.inc.php');
+    require_once('core/baseModel.class.php');
+    require_once('core/blog.class.php');
+    $blog = new Blog('varsity');
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -34,6 +40,16 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=200482590030408";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div class="container">
         <div id="topBarCont">
             <div class="row">
@@ -87,25 +103,50 @@
             </div>
             <!-- End header 2 -->
         </header>
+
         <div role="main" id="main">
+            <div id="bg"></div>
             <!-- Masthead -->
             <div class="row">
                 <div class="span12">
                     <div id="masthead" class="clearfix">
-                        <h2>Varsity <span>Live</span></h2>
+                        <!--<h2>Varsity <span>Live</span></h2>-->
+                        <!--
                         <div class="info">
                             <p>Varsity info</p>
                         </div>
-                        <div class="socket-info clearfix">
-                            <p id="status"></p>
-                            <p id="update">Page updates automatically</p>
+                        -->
+                        <div class="row">
+                            <div class="socket-info clearfix span6">
+                                <p id="status"></p>
+                                <p id="update">Page updates automatically</p>
+                            </div>
+                            <div class="social-icons clearfix">
+                                <div id="facebook">
+                                    <div class="fb-like" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false" data-font="arial"></div>
+                                </div>
+                                <div id="twitter">
+                                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="span8 feed loading"></div>
+            </div>
+            <div class="row">
+                <div class="span8">
+                    <?php if($blog->getSticky()) { ?>
+                    <div class="sticky">
+                        <?php echo $blog->getSticky(); ?>
+                    </div>
+                    <?php } ?>
+                    <div class="feed loading">
+                    </div>
+                </div>
                 <div class="span4 sidebar">
                     <h3>Matches</h3>
                     <div class="matchlist">
