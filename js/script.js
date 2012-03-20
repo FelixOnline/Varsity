@@ -2,7 +2,8 @@
 
 */
 
-var socket = io.connect('http://176.34.227.200:3000');
+//var socket = io.connect('http://176.34.227.200:3000');
+var socket = io.connect('http://localhost:3000');
 
 var posts = {};
 
@@ -37,6 +38,7 @@ socket.on('disconnect', function() {
 
 socket.on('datastart', function(data) {
     $(function() {
+        console.log(data);
         postscont.removeClass('loading').empty();
         $.each(data.data.posts.reverse(), function(index, post) {
             addPost(post);

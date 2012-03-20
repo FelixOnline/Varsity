@@ -24,7 +24,7 @@ foreach($blog->getPosts() as $key => $post) {
         'content' => $post->getContent(),
         'timestamp' => $post->getTimestamp(),
         'type' => $post->getType(),
-        'meta' => json_decode($post->getMeta())
+        'meta' => json_decode($post->getMeta(), true)
     );
 }
 
