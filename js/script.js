@@ -2,8 +2,8 @@
 
 */
 
-var socket = io.connect('http://176.34.227.200:3000');
-//var socket = io.connect('http://localhost:3000');
+//var socket = io.connect('http://176.34.227.200:3000');
+var socket = io.connect('http://localhost:3000');
 
 var posts = {};
 
@@ -92,13 +92,14 @@ function addPost(post, animate) {
         if(post.type == 'matchupdate' || post.type == 'matchfinish') {
             post.meta.team1 = matches[post.meta.match].team1;
             post.meta.team2 = matches[post.meta.match].team2;
+            post.meta.location = matches[post.meta.match].location;
         }
         render = $(template[post.type].render(post));
     }
     posts[post.id] = post;
     if(animate) {
         postscont.prepend(render);
-        render.hide().fadeIn(600);
+        render.hide().fadeIn(1000);
     } else {
         postscont.prepend(render);
     }
@@ -139,8 +140,8 @@ function changeMatch(match) {
         var position = checkMatchTime(match);
         console.log(matches[match.id].position, matches[match.id], position);
         if(position != matches[match.id].position) {
-            elm.hide().appendTo(cache.match[position]).fadeIn(600);
-            matches[match.id].position = postition;
+            elm.hide().appendTo(cache.match[position]).fadeIn(1000);
+            matches[match.id].position = position;
         }
     }
 }

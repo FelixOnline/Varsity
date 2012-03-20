@@ -107,13 +107,14 @@
             <div class="row">
                 <div class="span8 feed loading"></div>
                 <div class="span4 sidebar">
+                    <h3>Matches</h3>
                     <div class="matchlist">
                         <h4>Current</h4>
-                        <div id="current"></div>
+                        <div id="current" class="cont"></div>
                         <h4>Coming up</h4>
-                        <div id="coming"></div>
+                        <div id="coming" class="cont"></div>
                         <h4>Finished</h4>
-                        <div id="finished"></div>
+                        <div id="finished" class="cont"></div>
                     </div>
                 </div>
             </div>

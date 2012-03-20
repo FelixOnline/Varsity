@@ -2,14 +2,16 @@
     <div class="row">
         <div class="span1">
             <div class="time">{{time}}</div>
+            <div class="update">Match Update</div>
         </div>
         <div class="span4">
-            Match Updated!   
-            <div class="info">
-                {{meta.team1}} v {{meta.team2}}
-            </div>
-            <div class="score">
-                {{meta.score1}} - {{meta.score2}}
+            <div class="info clearfix">
+                <div class="info">{{meta.location}}</div>
+                <div class="team1">{{meta.team1}}</div> 
+                <div class="score1">{{meta.score1}}</div> 
+                <div class="divider">-</div> 
+                <div class="score2">{{meta.score2}}</div> 
+                <div class="team2">{{meta.team2}}</div> 
             </div>
         </div>
     </div>
