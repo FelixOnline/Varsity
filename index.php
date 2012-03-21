@@ -87,7 +87,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="span4 catPic last">
+                <div class="span4 catPic last hidden-phone">
                     <!--<img src="../img/felix_cat-small.jpg" width="100px" height="110px"/>-->
                 </div>
             </div>
