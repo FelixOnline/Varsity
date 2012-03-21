@@ -21,13 +21,15 @@ $output = array(
 );
 
 foreach($blog->getPosts() as $key => $post) {
-    $output['posts'][$key] = array(
-        'id' => $post->getId(),
-        'content' => $post->getContent(),
-        'timestamp' => $post->getTimestamp(),
-        'type' => $post->getType(),
-        'meta' => json_decode($post->getMeta(), true)
-    );
+    if($post->getVisible() == 1) {
+        $output['posts'][] = array(
+            'id' => $post->getId(),
+            'content' => $post->getContent(),
+            'timestamp' => $post->getTimestamp(),
+            'type' => $post->getType(),
+            'meta' => json_decode($post->getMeta(), true)
+        );
+    }
 }
 
 $sql = "SELECT id FROM varsity ORDER BY start ASC";
