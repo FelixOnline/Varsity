@@ -22,13 +22,23 @@ $output = array(
 
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
-        $output['posts'][] = array(
-            'id' => $post->getId(),
-            'content' => $post->getContent(),
-            'timestamp' => $post->getTimestamp(),
-            'type' => $post->getType(),
-            'meta' => json_decode($post->getMeta(), true)
-        );
+        if($post->getId() > 29) {
+            $output['posts'][] = array(
+                'id' => $post->getId(),
+                'content' => $post->getContent(),
+                'timestamp' => $post->getTimestamp(),
+                'type' => $post->getType(),
+                'meta' => unserialize($post->getMeta())
+            );
+        } else {
+            $output['posts'][] = array(
+                'id' => $post->getId(),
+                'content' => $post->getContent(),
+                'timestamp' => $post->getTimestamp(),
+                'type' => $post->getType(),
+                'meta' => json_decode($post->getMeta(), true)
+            );
+        }
     }
 }
 
