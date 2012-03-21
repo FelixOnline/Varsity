@@ -22,7 +22,7 @@ $output = array(
 
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
-        if($post->getId() > 30) {
+        if($post->getId() > 32) {
             foreach(unserialize($post->getMeta()) as $key => $metadata) {
                 if(is_array($metadata)) {
                     foreach($metadata as $key2 => $metadata2) {
