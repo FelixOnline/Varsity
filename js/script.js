@@ -61,9 +61,11 @@ socket.on('datastart', function(data) {
             matches[match.id] = addMatch(match);
         });
 
-        $.each(data.data.posts.reverse(), function(index, post) {
-            addPost(post);
-        });
+        if(data.data.posts) {
+            $.each(data.data.posts.reverse(), function(index, post) {
+                addPost(post);
+            });
+        }
     });
 });
 
@@ -79,7 +81,6 @@ socket.on('newpost', function(data) {
 });
 
 socket.on('matchupdate', function(data) {
-    console.log('matchupdate', data);
     $.each(data.data.matches, function(index, match) {
         changeMatch(match);
     });
@@ -138,7 +139,6 @@ function changeMatch(match) {
         matches[match.id].score2 = match.score2;
         // movement
         var position = checkMatchTime(match);
-        console.log(matches[match.id].position, matches[match.id], position);
         if(position != matches[match.id].position) {
             elm.hide().appendTo(cache.match[position]).fadeIn(1000);
             matches[match.id].position = position;
@@ -155,3 +155,17 @@ function prefixNumber(number) {
     }
     return number;
 }
+
+$(function() {
+    // loop to check if match has started yet
+    var duration = 2*60*1000 // 2 mins
+    var loop = setInterval(function() {
+        $.each(matches, function(index, match) {
+            var position = checkMatchTime(match);
+            if(position != match.position) {
+                match.elm.hide().appendTo(cache.match[position]).fadeIn(1000);
+                matches[match.id].position = position;
+            }
+        });
+    }, duration);
+});
