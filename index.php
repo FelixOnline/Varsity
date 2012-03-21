@@ -139,11 +139,11 @@
             </div>
             <div class="row">
                 <div class="span8">
-                    <?php if($blog->getSticky()) { ?>
                     <div class="sticky">
+                    <?php if($blog->getSticky()) { ?>
                         <?php echo $blog->getSticky(); ?>
-                    </div>
                     <?php } ?>
+                    </div>
                     <div class="feed loading">
                     </div>
                 </div>

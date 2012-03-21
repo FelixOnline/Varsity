@@ -16,7 +16,8 @@ define('BLOG_POSTS_PER_PAGE', 10);
 
 $blog = new Blog('varsity');
 $output = array(
-    'name' => $blog->getName()
+    'name' => $blog->getName(),
+    'sticky' => $blog->getSticky()
 );
 
 foreach($blog->getPosts() as $key => $post) {

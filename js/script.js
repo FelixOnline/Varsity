@@ -22,6 +22,7 @@ $(function() {
     window.socketstatus = $('.clearfix #status');
     window.postscont = $('.feed');
     window.cache = {
+        sticky: $('.sticky'),
         match: {
             current: $('.matchlist #current'),
             coming: $('.matchlist #coming'),
@@ -73,6 +74,7 @@ socket.on('newpost', function(data) {
             addPost(post, true);
         }
     });
+    cache.sticky.html(data.data.sticky);
 });
 
 socket.on('matchupdate', function(data) {
