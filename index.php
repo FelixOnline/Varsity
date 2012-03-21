@@ -1,5 +1,5 @@
 <?php
-    define('STANDARD_URL', 'http://felixonline.local/');
+    define('STANDARD_URL', 'http://felixonline.co.uk/');
     require_once('inc/ez_sql_core.php');
     require_once('inc/ez_sql_mysql.php');
     require_once('inc/config.inc.php');
