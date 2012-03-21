@@ -23,12 +23,21 @@ $output = array(
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
         if($post->getId() > 30) {
+            foreach(unserialize($post->getMeta()) as $key => $metadata) {
+                if(is_array($metadata)) {
+                    foreach($metadata as $key2 => $metadata2) {
+                        $meta[$key][$key2] = $metadata2;
+                    }
+                } else {
+                    $meta[$key] = $metadata;
+                }
+            }
             $output['posts'][] = array(
                 'id' => $post->getId(),
                 'content' => $post->getContent(),
                 'timestamp' => $post->getTimestamp(),
                 'type' => $post->getType(),
-                'meta' => unserialize($post->getMeta())
+                'meta' => $meta 
             );
         } else {
             $output['posts'][] = array(
