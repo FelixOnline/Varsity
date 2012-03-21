@@ -27,7 +27,8 @@ $(function() {
         match: {
             current: $('.matchlist #current'),
             coming: $('.matchlist #coming'),
-            finished: $('.matchlist #finished')
+            finished: $('.matchlist #finished'),
+            jpr: $('.matchlist #jpr')
         }
     }
 });
@@ -121,7 +122,9 @@ function addMatch(match) {
 
 function checkMatchTime(match) {
     var start = new Date(match.start*1000);
-    if(match.finished == 1) { // finished
+    if(match.id == '29') {
+        return 'jpr';
+    } else if(match.finished == 1) { // finished
         return 'finished';
     } else if(start.getTime() > Date.now()) { // coming up
         return 'coming';

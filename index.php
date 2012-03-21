@@ -162,12 +162,13 @@
                 <div class="span4 sidebar">
                     <h3>Matches</h3>
                     <div class="matchlist">
-                        <h4>Current</h4>
-                        <div id="current" class="cont"></div>
-                        <h4>Coming up</h4>
-                        <div id="coming" class="cont"></div>
+                        <div id="jpr" class="cont"></div>
                         <h4>Finished</h4>
                         <div id="finished" class="cont"></div>
+                        <h4>Coming up</h4>
+                        <div id="coming" class="cont"></div>
+                        <h4>Current</h4>
+                        <div id="current" class="cont"></div>
                     </div>
                 </div>
             </div>
