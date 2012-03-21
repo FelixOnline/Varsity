@@ -120,10 +120,7 @@ function addMatch(match) {
 
 function checkMatchTime(match) {
     var start = new Date(match.start*1000);
-    if(
-        start.getTime() + (match.duration*60*1000) < Date.now()
-        || match.finished == 1
-    ) { // finished
+    if(match.finished == 1) { // finished
         return 'finished';
     } else if(start.getTime() > Date.now()) { // coming up
         return 'coming';
