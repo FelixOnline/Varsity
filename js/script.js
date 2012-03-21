@@ -2,8 +2,8 @@
 
 */
 
-var socket = io.connect('http://176.34.227.200:3000');
-//var socket = io.connect('http://localhost:3000');
+//var socket = io.connect('http://176.34.227.200:3000');
+var socket = io.connect('http://localhost:3000');
 
 var posts = {};
 
@@ -14,6 +14,7 @@ var template = {
     normal: new Hogan.Template(T.post),
     twitter: new Hogan.Template(T.posttwitter),
     picture: new Hogan.Template(T.postpicture),
+    quote: new Hogan.Template(T.postquote),
     matchupdate: new Hogan.Template(T.matchupdate),
     matchfinish: new Hogan.Template(T.matchfinish)
 }
