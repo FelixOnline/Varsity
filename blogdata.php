@@ -22,7 +22,7 @@ $output = array(
 
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
-        if($post->getId() > 29) {
+        if($post->getId() > 30) {
             $output['posts'][] = array(
                 'id' => $post->getId(),
                 'content' => $post->getContent(),
