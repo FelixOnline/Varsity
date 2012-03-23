@@ -64,9 +64,12 @@ if(!config.static) {
 
             if(data.data.posts) {
                 $.each(data.data.posts.reverse(), function(index, post) {
-                    addPost(post);
+                    if(!posts[post.id]) {
+                        addPost(post);
+                    }
                 });
             }
+            cache.sticky.html(data.data.sticky);
         });
     });
 
