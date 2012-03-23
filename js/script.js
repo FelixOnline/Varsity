@@ -51,21 +51,29 @@ if(!config.static) {
         });
     });
 
+    /*
+     * datastart
+     * Called when client firsts connects to server
+     * Can be called again if the client looses connection
+     */
     socket.on('datastart', function(data) {
         $(function() {
-            postscont.removeClass('loading').empty();
-            $.each(cache.match, function(index, section) {
-                section.empty();
-            });
 
+            // display matches
             $.each(data.data.matches, function(index, match) {
-                matches[match.id] = addMatch(match);
+                if(!matches[match.id]) { // if match isn't already displayed exists
+                    matches[match.id] = addMatch(match);
+                }
             });
 
-            if(data.data.posts) {
+            // display posts
+            if(!posts) { // if no posts
+                postscont.removeClass('loading').empty();
+            }
+            if(data.data.posts) { // if there are posts in the data
                 $.each(data.data.posts.reverse(), function(index, post) {
                     if(!posts[post.id]) {
-                        addPost(post);
+                        posts[post.id] = addPost(post);
                     }
                 });
             }
@@ -73,43 +81,85 @@ if(!config.static) {
         });
     });
 
+    /*
+     * newpost
+     * Called when there is a new post
+     */
     socket.on('newpost', function(data) {
         // data.posts = array of all posts
         // need to determine whether post is already displayed
         $.each(data.data.posts.reverse(), function(index, post) {
             if(!posts[post.id]) {
-                addPost(post, true);
+                posts[post.id] = addPost(post, true);
             }
         });
         cache.sticky.html(data.data.sticky);
     });
 
+    /*
+     * matchupdate
+     * Called when there is a match update
+     */
     socket.on('matchupdate', function(data) {
         $.each(data.data.matches, function(index, match) {
             changeMatch(match);
         });
     });
-} else {
-    $(function() {
-        socketstatus.hide();
-        socketupdate.hide();
+
+    /*
+     * reset
+     * Called when the feed needs to be reset (on a post delete)
+     */
+    socket.on('reset', function(data) {
+        // empty matches
+        $.each(cache.match, function(index, section) {
+            section.empty();
+        });
+
+        matches = {}; // reset matches
+
+        $.each(data.data.matches, function(index, match) {
+            matches[match.id] = addMatch(match);
+        });
+
+        posts = {};
         postscont.removeClass('loading').empty();
+        if(data.data.posts) { // if there are posts in the data
+            $.each(data.data.posts.reverse(), function(index, post) {
+                posts[post.id] = addPost(post);
+            });
+        }
+        cache.sticky.html(data.data.sticky);
+    });
+} else { // static page
+    $(function() {
+        socketstatus.hide(); // hide connection status
+        socketupdate.hide();
+        postscont.removeClass('loading').empty(); // clean posts cont
 
         // empty match sections
         $.each(cache.match, function(index, section) {
             section.empty();
         });
 
+        // add matches
         $.each(config.data.matches, function(index, match) {
             matches[match.id] = addMatch(match);
         });
 
+        // add posts
         $.each(config.data.posts.reverse(), function(index, post) {
-            addPost(post);
+            posts[post.id] = addPost(post);
         });
     });
 }
 
+/*
+ * Add post
+ * Render temmplate and prepend it to feed
+ *
+ * Returns post object
+ */
 function addPost(post, animate) {
     var time = new Date(post.timestamp*1000);
     post.time = prefixNumber(time.getHours())+':'+prefixNumber(time.getMinutes());
@@ -124,15 +174,21 @@ function addPost(post, animate) {
         }
         render = $(template[post.type].render(post));
     }
-    posts[post.id] = post;
     if(animate) {
         postscont.prepend(render);
         render.hide().fadeIn(1000);
     } else {
         postscont.prepend(render);
     }
+    return post;
 }
 
+/*
+ * Add match
+ * Render match and add it to match list
+ *
+ * Returns match object
+ */
 function addMatch(match) {
     var start = new Date(match.start*1000);
     match.time = prefixNumber(start.getHours())+':'+prefixNumber(start.getMinutes());
@@ -143,6 +199,15 @@ function addMatch(match) {
     return match;
 }
 
+/*
+ * Check where match should be in list
+ *
+ * Returns:
+ *      'jpr'       - jpr match (id 29)
+ *      'finished'  - match has finished
+ *      'coming'    - match is coming up
+ *      'current'   - match is currently happening
+ */
 function checkMatchTime(match) {
     var start = new Date(match.start*1000);
     if(match.id == '29') {
@@ -156,6 +221,11 @@ function checkMatchTime(match) {
     }
 }
 
+/*
+ * Change match details
+ *
+ * Returns match object
+ */
 function changeMatch(match) {
     if(matches[match.id]) {
         var elm = matches[match.id].elm;
@@ -169,11 +239,14 @@ function changeMatch(match) {
             elm.hide().appendTo(cache.match[position]).fadeIn(1000);
             matches[match.id].position = position;
         }
+        return matches[match.id];
     }
 }
 
 /*
  * If number is less than 10 then prefix with a 0
+ *
+ * Returns prefixed number
  */
 function prefixNumber(number) {
     if(number < 10) {
@@ -182,6 +255,9 @@ function prefixNumber(number) {
     return number;
 }
 
+/*
+ * Set up loop to check match time
+ */
 $(function() {
     // loop to check if match has started yet
     var duration = 2*60*1000 // 2 mins
