@@ -1,10 +1,5 @@
 <?php
-    require_once('inc/ez_sql_core.php');
-    require_once('inc/ez_sql_mysql.php');
-    require_once('inc/config.inc.php');
-    require_once('core/baseModel.class.php');
-    require_once('core/blog.class.php');
-    $blog = new Blog('tedx');
+    define('STANDARD_URL','http://felixonline.local/');
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -152,9 +147,6 @@
                 <!-- Feed -->
                 <div class="span8">
                     <div class="sticky">
-                    <?php if($blog->getSticky()) { ?>
-                        <?php echo $blog->getSticky(); ?>
-                    <?php } ?>
                     </div>
                     <div class="feed loading">
                     </div>
