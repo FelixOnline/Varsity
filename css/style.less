@@ -550,6 +550,19 @@ header {
                 }
             }
         }
+        .twtr-widget {
+            .twtr-hd {
+                h3 {
+                    font-size: 20px !important;
+                }
+            }
+            .twtr-tweet-text {
+                p {
+                    font-size: 14px;
+                    line-height: 18px !important;
+                }
+            }
+        }
     }
 }
 
@@ -591,14 +604,22 @@ body {
 	body {
 		
 	}
-    #main {
-        #bg {
-            background: url('../img/scrumweb-900.jpg') center -10px no-repeat;
-        }
-    }
-    
     .picture {
         img {
+            width: 300px !important;
+        }
+    }
+    .logocont {
+        margin-bottom: 5px !important;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    #masthead {
+        h2 {
+            background: url('../img/header_logo_300.png') 0 0 no-repeat !important;
+            height: 100px !important;
             width: 300px !important;
         }
     }

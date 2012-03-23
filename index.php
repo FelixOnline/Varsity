@@ -159,7 +159,36 @@
                 
                 <!-- Sidebar -->
                 <div class="span4 sidebar">
-                    <p>sidebar</p>
+                    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                    <script>
+                        new TWTR.Widget({
+                            version: 2,
+                            type: 'search',
+                            search: '#tedxic',
+                            interval: 30000,
+                            title: '#TEDxIC',
+                            subject: '',
+                            width: 'auto',
+                            height: 500,
+                            theme: {
+                                shell: {
+                                    background: '#ffffff',
+                                    color: '#ff2b06'
+                                },
+                                tweets: {
+                                    background: '#ffffff',
+                                    color: '#444444',
+                                    links: '#ff2b06'
+                                }
+                            },
+                            features: {
+                                scrollbar: false,
+                                loop: true,
+                                live: true,
+                                behavior: 'default'
+                            }
+                        }).render().start();
+                    </script>
                 </div>
             </div>
         </div>
