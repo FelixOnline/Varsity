@@ -26,9 +26,6 @@ foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
         if($post->getId() > 0) {
             $meta = unserialize($post->getMeta());
-            if($post->getType() == 'quote') {
-                $meta['quote'] = stripslashes($meta['quote']);
-            }
             $output['posts'][] = array(
                 'id' => $post->getId(),
                 'content' => $post->getContent(),
