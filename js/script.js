@@ -67,8 +67,9 @@ if(!config.static) {
             });
 
             // display posts
+            postscont.removeClass('loading');
             if(!posts) { // if no posts
-                postscont.removeClass('loading').empty();
+                postscont.empty();
             }
             if(data.data.posts) { // if there are posts in the data
                 $.each(data.data.posts.reverse(), function(index, post) {

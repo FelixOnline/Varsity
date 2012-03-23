@@ -17,12 +17,14 @@ define('BLOG_POSTS_PER_PAGE', 10);
 $blog = new Blog('varsity');
 $output = array(
     'name' => $blog->getName(),
-    'sticky' => $blog->getSticky()
+    'sticky' => $blog->getSticky(),
+    'posts' => array(),
+    'matches' => array()
 );
 
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
-        if($post->getId() > 32) {
+        if($post->getId() > 0) {
             $meta = unserialize($post->getMeta());
             if($post->getType() == 'quote') {
                 $meta['quote'] = stripslashes($meta['quote']);

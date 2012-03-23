@@ -1,5 +1,5 @@
 <?php
-    define('STANDARD_URL', 'http://felixonline.co.uk/');
+    //define('STANDARD_URL', 'http://felixonline.co.uk/');
     require_once('inc/ez_sql_core.php');
     require_once('inc/ez_sql_mysql.php');
     require_once('inc/config.inc.php');
@@ -67,7 +67,7 @@
             <div class="row">
                 <div id="topBar" class="span12">
                     <div class="links first">
-                        <ul>
+                        <ul class="clearfix">
                             <li class="first"><a href="<?php echo STANDARD_URL; ?>" class="selected">Felix Online</a></li>
                             <li><a href="<?php echo STANDARD_URL; ?>media/">Media</a></li>
                             <li class="last"><a href="<?php echo STANDARD_URL; ?>issuearchive/">Issue Archive</a></li>
