@@ -24,7 +24,7 @@ $(function() {
     }, 0);
 });
 
-if(!config.static) {
+if(config.live) {
     var socket = io.connect(config.url);
     socket.on('connect', function() {
         $(function() {
