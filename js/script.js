@@ -28,6 +28,7 @@ if(!config.static) {
             .removeClass('disconnected')
             .addClass('connected')
             .text('Connected');
+            socketupdate.show();
         });
     });
 
@@ -37,6 +38,7 @@ if(!config.static) {
             .removeClass('connected')
             .addClass('disconnected')
             .text('Disconnected');
+            socketupdate.hide();
         });
     });
 

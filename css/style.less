@@ -312,27 +312,37 @@ header {
 
 /* $Main */
 #main {
-    #bg {
-        background: url('../img/scrumweb-1200.jpg') center -10px no-repeat;
-        height: 220px;
-        width: 100%;
-        margin-top: 20px;
-    }
     #masthead {
         padding: 0px 10px;
         border-bottom: 1px solid #BEBEBE;
         h2 {
             text-indent: -9999px;
-            /*font-size: 40px;*/
-            /*font-weight: normal;*/
-            /*letter-spacing: -1px;*/
-            /*margin: 0px;*/
-            /*margin-top: 10px;*/
+            background: url('../img/header_logo_144px.png') 0 0 no-repeat;
+            width: 410px;
+            height: 130px;
+            float: left;
         }
         .info {
+            float: right;
             margin-bottom: 10px;
+            padding-top: 10px;
             p {
-                font-style: italic;
+                font-size: 18px;
+                line-height: 27px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+                text-align: right;
+            }
+            a {
+                color: #ff2b06;
+                text-decoration: none;
+            }
+            a:visited {
+                color: #ff2b06;
+            }
+            a:hover {
+                color: #ff2b06;
+                text-decoration: underline; 
             }
         }
         .social-icons {
@@ -356,6 +366,7 @@ header {
         }
         #update {
             padding-left: 20px;
+            display: none;
             background: url('../img/refresh.png') 0px 0px no-repeat;
         }
         #status {

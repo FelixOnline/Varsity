@@ -111,17 +111,22 @@
         </header>
 
         <div role="main" id="main">
-            <div id="bg"></div>
             <!-- Masthead -->
             <div class="row">
                 <div class="span12">
                     <div id="masthead" class="clearfix">
-                        <!--<h2>Varsity <span>Live</span></h2>-->
-                        <!--
-                        <div class="info">
-                            <p>Varsity info</p>
+                        <div class="clearfix">
+                            <a href="http://tedximperialcollege.com/" title="TEDxImperialCollege">
+                                <h2>TEDxImperialCollege</h2>
+                            </a>
+                            <div class="info">
+                                <p>March 24th 2012</p>
+                                <p>London, UK</p>
+                                <a class="hashtag" href="https://twitter.com/#!/search/realtime/%23tedxic">
+                                    <p>#TEDxIC</p>
+                                </a>
+                            </div>
                         </div>
-                        -->
                         <div class="row">
                             <div class="socket-info clearfix span6">
                                 <p id="status"></p>
