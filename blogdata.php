@@ -23,14 +23,9 @@ $output = array(
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
         if($post->getId() > 32) {
-            foreach(unserialize($post->getMeta()) as $key => $metadata) {
-                if(is_array($metadata)) {
-                    foreach($metadata as $key2 => $metadata2) {
-                        $meta[$key][$key2] = $metadata2;
-                    }
-                } else {
-                    $meta[$key] = $metadata;
-                }
+            $meta = unserialize($post->getMeta());
+            if($post->getType() == 'quote') {
+                $meta['quote'] = stripslashes($meta['quote']);
             }
             $output['posts'][] = array(
                 'id' => $post->getId(),
