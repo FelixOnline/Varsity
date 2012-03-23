@@ -14,56 +14,24 @@ require_once('core/match.class.php');
 
 define('BLOG_POSTS_PER_PAGE', 10);
 
-$blog = new Blog('varsity');
+$blog = new Blog('tedx');
 $output = array(
     'name' => $blog->getName(),
     'sticky' => $blog->getSticky(),
-    'posts' => array(),
-    'matches' => array()
+    'posts' => array()
 );
 
 foreach($blog->getPosts() as $key => $post) {
     if($post->getVisible() == 1) {
-        if($post->getId() > 0) {
-            $meta = unserialize($post->getMeta());
-            if($post->getType() == 'quote') {
-                $meta['quote'] = stripslashes($meta['quote']);
-            }
-            $output['posts'][] = array(
-                'id' => $post->getId(),
-                'content' => $post->getContent(),
-                'timestamp' => $post->getTimestamp(),
-                'type' => $post->getType(),
-                'meta' => $meta 
-            );
-        } else {
-            $output['posts'][] = array(
-                'id' => $post->getId(),
-                'content' => $post->getContent(),
-                'timestamp' => $post->getTimestamp(),
-                'type' => $post->getType(),
-                'meta' => json_decode($post->getMeta(), true)
-            );
-        }
+        $meta = unserialize($post->getMeta());
+        $output['posts'][] = array(
+            'id' => $post->getId(),
+            'content' => $post->getContent(),
+            'timestamp' => $post->getTimestamp(),
+            'type' => $post->getType(),
+            'meta' => $meta 
+        );
     }
-}
-
-$sql = "SELECT id FROM varsity ORDER BY start ASC";
-$matches = $db->get_results($sql);
-
-foreach($matches as $key => $object) {
-    $match = new Match($object->id);
-    $output['matches'][$key] = array(
-        'id' => $match->getId(),
-        'start' => $match->getStart(),
-        'team1' => $match->getTeam1(),
-        'team2' => $match->getTeam2(),
-        'score1' => $match->getScore1(),
-        'score2' => $match->getScore2(),
-        'duration' => $match->getDuration(),
-        'finished' => $match->getFinished(),
-        'location' => $match->getLocation()
-    );
 }
 
 header('Cache-Control: no-cache, must-revalidate');

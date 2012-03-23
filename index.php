@@ -1,11 +1,10 @@
 <?php
-    //define('STANDARD_URL', 'http://felixonline.co.uk/');
     require_once('inc/ez_sql_core.php');
     require_once('inc/ez_sql_mysql.php');
     require_once('inc/config.inc.php');
     require_once('core/baseModel.class.php');
     require_once('core/blog.class.php');
-    $blog = new Blog('varsity');
+    $blog = new Blog('tedx');
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -18,7 +17,7 @@
        More info: h5bp.com/i/378 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Varsity - Felix Online</title>
+	<title>TEDxImperialCollege - Felix Online</title>
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width">
@@ -150,6 +149,7 @@
             <div class="row">
             </div>
             <div class="row">
+                <!-- Feed -->
                 <div class="span8">
                     <div class="sticky">
                     <?php if($blog->getSticky()) { ?>
@@ -159,17 +159,10 @@
                     <div class="feed loading">
                     </div>
                 </div>
+                
+                <!-- Sidebar -->
                 <div class="span4 sidebar">
-                    <h3>Matches</h3>
-                    <div class="matchlist">
-                        <div id="jpr" class="cont"></div>
-                        <h4>Finished</h4>
-                        <div id="finished" class="cont"></div>
-                        <h4>Coming up</h4>
-                        <div id="coming" class="cont"></div>
-                        <h4>Current</h4>
-                        <div id="current" class="cont"></div>
-                    </div>
+                    <p>sidebar</p>
                 </div>
             </div>
         </div>
