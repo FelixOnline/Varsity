@@ -3,3 +3,5 @@ liveblog/
 
 # config
 inc/config.inc.php
+js/config.js
+
