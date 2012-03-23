@@ -198,7 +198,7 @@
     <script src="js/templates/template.js"></script>
 
     <!-- scripts concatenated and minified via build script -->
-    <script src="js/plugins.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/script.js"></script>
     <!-- end scripts -->
 

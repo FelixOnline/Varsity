@@ -2,9 +2,6 @@
 
 */
 
-var socket = io.connect('http://176.34.227.200:3000');
-//var socket = io.connect('http://localhost:3000');
-
 var posts = {};
 
 var matches = {};
@@ -21,6 +18,7 @@ var template = {
 
 $(function() {
     window.socketstatus = $('.clearfix #status');
+    window.socketupdate = $('.clearfix #update');
     window.postscont = $('.feed');
     window.cache = {
         sticky: $('.sticky'),
@@ -33,59 +31,81 @@ $(function() {
     }
 });
 
-socket.on('connect', function() {
-    $(function() {
-        socketstatus
-        .removeClass('disconnected')
-        .addClass('connected')
-        .text('Connected');
+if(!config.static) {
+    var socket = io.connect(config.url);
+    socket.on('connect', function() {
+        $(function() {
+            socketstatus
+            .removeClass('disconnected')
+            .addClass('connected')
+            .text('Connected');
+        });
     });
-});
 
-socket.on('disconnect', function() {
-    $(function() {
-        socketstatus
-        .removeClass('connected')
-        .addClass('disconnected')
-        .text('Disconnected');
+    socket.on('disconnect', function() {
+        $(function() {
+            socketstatus
+            .removeClass('connected')
+            .addClass('disconnected')
+            .text('Disconnected');
+        });
     });
-});
 
-socket.on('datastart', function(data) {
+    socket.on('datastart', function(data) {
+        $(function() {
+            postscont.removeClass('loading').empty();
+            $.each(cache.match, function(index, section) {
+                section.empty();
+            });
+
+            $.each(data.data.matches, function(index, match) {
+                matches[match.id] = addMatch(match);
+            });
+
+            if(data.data.posts) {
+                $.each(data.data.posts.reverse(), function(index, post) {
+                    addPost(post);
+                });
+            }
+        });
+    });
+
+    socket.on('newpost', function(data) {
+        // data.posts = array of all posts
+        // need to determine whether post is already displayed
+        $.each(data.data.posts.reverse(), function(index, post) {
+            if(!posts[post.id]) {
+                addPost(post, true);
+            }
+        });
+        cache.sticky.html(data.data.sticky);
+    });
+
+    socket.on('matchupdate', function(data) {
+        $.each(data.data.matches, function(index, match) {
+            changeMatch(match);
+        });
+    });
+} else {
     $(function() {
+        socketstatus.hide();
+        socketupdate.hide();
         postscont.removeClass('loading').empty();
+
+        // empty match sections
         $.each(cache.match, function(index, section) {
             section.empty();
         });
 
-        $.each(data.data.matches, function(index, match) {
+        $.each(config.data.matches, function(index, match) {
             matches[match.id] = addMatch(match);
         });
 
-        if(data.data.posts) {
-            $.each(data.data.posts.reverse(), function(index, post) {
-                addPost(post);
-            });
-        }
+        $.each(config.data.posts.reverse(), function(index, post) {
+            addPost(post);
+        });
     });
-});
-
-socket.on('newpost', function(data) {
-    // data.posts = array of all posts
-    // need to determine whether post is already displayed
-    $.each(data.data.posts.reverse(), function(index, post) {
-        if(!posts[post.id]) {
-            addPost(post, true);
-        }
-    });
-    cache.sticky.html(data.data.sticky);
-});
-
-socket.on('matchupdate', function(data) {
-    $.each(data.data.matches, function(index, match) {
-        changeMatch(match);
-    });
-});
+}
 
 function addPost(post, animate) {
     var time = new Date(post.timestamp*1000);
