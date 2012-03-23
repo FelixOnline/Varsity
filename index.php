@@ -20,14 +20,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<!-- Bootstrap -->
-	<link rel="stylesheet/less" href="css/bootstrap/bootstrap.less" type="text/css" media="screen" />
-	<link rel="stylesheet/less" href="css/bootstrap/responsive.less" type="text/css" media="screen" />
-	
-	<!-- Your styles -->
-	<link rel="stylesheet/less" href="css/style.less" type="text/css" media="screen" />
-    <script src="js/libs/less-1.3.0.min.js" type="text/javascript"></script>
+    
+	<link rel="stylesheet" href="css/header.css" type="text/css" media="screen" />
 	
 	<!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
 	<script type="text/javascript" src="js/css3-mediaqueries.js"></script>
