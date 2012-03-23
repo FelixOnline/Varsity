@@ -119,7 +119,7 @@
                             <a href="http://tedximperialcollege.com/" title="TEDxImperialCollege">
                                 <h2>TEDxImperialCollege</h2>
                             </a>
-                            <div class="info">
+                            <div class="info hidden-phone">
                                 <p>March 24th 2012</p>
                                 <p>London, UK</p>
                                 <a class="hashtag" href="https://twitter.com/#!/search/realtime/%23tedxic">
