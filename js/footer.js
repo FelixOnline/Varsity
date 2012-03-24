@@ -246,12 +246,6 @@ T.post=function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div class=
 T.postpicture=function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div class=\"post picture\">";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"time span1\">";b += (_.v(_.f("time",c,p,0)));b += "</div>";b += "\n" + i;b += "        <div class=\"piccont row clearfix\">";b += "\n" + i;b += "            <img src=\"";b += (_.v(_.d("meta.picurl",c,p,0)));b += "\" class=\"span5\"/>";b += "\n" + i;b += "        </div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"content span5 offset1\">";b += (_.f("content",c,p,0));b += "</div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "</div>";b += "\n";return b;};
 T.postquote=function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div class=\"post quotecont\">";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"span1\">";b += "\n" + i;b += "            <div class=\"time\">";b += (_.v(_.f("time",c,p,0)));b += "</div>";b += "\n" + i;b += "        </div>";b += "\n" + i;b += "        <div class=\"span5 quote\">";b += (_.d("meta.quote",c,p,0));b += "</div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"content span5 offset1\">";b += (_.f("content",c,p,0));b += "</div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "</div>";b += "\n";return b;};
 T.posttwitter=function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div class=\"post twitter\">";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"span1\">";b += "\n" + i;b += "            <div class=\"time\">";b += (_.v(_.f("time",c,p,0)));b += "</div>";b += "\n" + i;b += "            <div id=\"twittericon\"></div>";b += "\n" + i;b += "        </div>";b += "\n" + i;b += "        <div class=\"span5\">";b += (_.d("meta.tweetcontent.html",c,p,0));b += "</div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "    <div class=\"row\">";b += "\n" + i;b += "        <div class=\"content span5 offset1\">";b += (_.f("content",c,p,0));b += "</div>";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "</div>";b += "\n";return b;};
-window.config = {};
-
-//config.url = 'http://176.34.227.200:3000';
-config.url = 'http://localhost:3000';
-
-config.live = true;
 /* Author: J.Kim
 
 */

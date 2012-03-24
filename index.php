@@ -206,6 +206,7 @@
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
     <script src="http://176.34.227.200:3000/socket.io/socket.io.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/footer.min.js"></script>
 </body>
 </html>
