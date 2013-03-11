@@ -5,7 +5,7 @@
     require_once('inc/config.inc.php');
     require_once('core/baseModel.class.php');
     require_once('core/blog.class.php');
-    $blog = new Blog('varsity');
+    $blog = new Blog('varsity-2013');
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -77,22 +77,9 @@
             </div>
         </div>
         <header>
-            <!-- Begin row 1 -->
-            <div class="row">
-                <div class="span5 line hidden-phone"></div>
-                <div class="span2 strapline" id="header1">
-                    <p>"Keep the Cat Free"</p>
-                </div>
-                <div class="span5 line last hidden-phone"></div>
-            </div>
-            <!-- End row 1 -->
-
             <!-- Begin header main -->
             <div class="row">
-                <div class="span4 date hidden-phone">
-                    <p><?php echo date('d.m.Y');?></p>
-                </div>
-                <div class="span4 logocont">
+                <div class="span6 logocont">
                     <a href="<?php echo STANDARD_URL; ?>">
                         <div class="logo"> 
                             <h1>Felix</h1>
@@ -104,16 +91,6 @@
                 </div>
             </div>
             <!-- End header main -->
-
-            <!-- Begin header 2 -->
-            <div class="row">
-                <div class="span3 line hidden-phone"></div>
-                <div class="span6 strapline" id="header2">
-                    <p>The student voice of Imperial College London since 1949</p>
-                </div>
-                <div class="span3 line last hidden-phone"></div>
-            </div>
-            <!-- End header 2 -->
         </header>
 
         <div role="main" id="main">
@@ -122,12 +99,6 @@
             <div class="row">
                 <div class="span12">
                     <div id="masthead" class="clearfix">
-                        <!--<h2>Varsity <span>Live</span></h2>-->
-                        <!--
-                        <div class="info">
-                            <p>Varsity info</p>
-                        </div>
-                        -->
                         <div class="row">
                             <div class="socket-info clearfix span6">
                                 <p id="status"></p>
@@ -193,7 +164,8 @@
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
     <script src="http://platform.twitter.com/widgets.js"></script>
 
-    <script src="http://176.34.227.200:3000/socket.io/socket.io.js"></script>
+    <!--<script src="http://176.34.227.200:3000/socket.io/socket.io.js"></script>-->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="js/libs/template.js"></script>
     <script src="js/templates/template.js"></script>
 

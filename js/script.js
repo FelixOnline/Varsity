@@ -1,6 +1,6 @@
-/* Author: J.Kim
-
-*/
+/**
+ * Author: J.Kim
+ */
 
 var posts = {};
 
@@ -58,7 +58,6 @@ if(!config.static) {
      */
     socket.on('datastart', function(data) {
         $(function() {
-
             // display matches
             $.each(data.data.matches, function(index, match) {
                 if(!matches[match.id]) { // if match isn't already displayed exists
