@@ -7,17 +7,17 @@
 class BaseModel {
     protected $fields = array(); // array that holds all the database fields
     protected $class;
-	protected $item;
+    protected $item;
     protected $db;
 
     function __construct($dbObject, $class, $item=null) {
         /* initialise db connection and store it in object */
         global $db;
         $this->db = $db;
-		
-		$this->class = $class;
-		$this->item = $item;
-		
+
+        $this->class = $class;
+        $this->item = $item;
+
         if($dbObject) {
             foreach($dbObject as $key => $value) {
                 $this->fields[$key] = $value;
@@ -120,5 +120,3 @@ class BaseModel {
         return preg_replace_callback('/([A-Z])/', $func, $str);
     }
 }
-
-?>
