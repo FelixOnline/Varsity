@@ -151,7 +151,7 @@
                         <img src="../img/title-small.jpg"/>
                     </div>
                     <div class="span6 details alpha">
-                        <p>&copy; Felix Imperial MMXII <a href="#topBarCont">Top of page</a></p>
+                        <p>&copy; Felix Imperial MMXIII <a href="#topBarCont">Top of page</a></p>
                     </div>
                 </div>
             </div>
