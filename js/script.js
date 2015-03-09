@@ -203,14 +203,14 @@ function addMatch(match) {
  * Check where match should be in list
  *
  * Returns:
- *      'jpr'       - jpr match (id 29)
+ *      'jpr'       - rugby showdown match
  *      'finished'  - match has finished
  *      'coming'    - match is coming up
  *      'current'   - match is currently happening
  */
 function checkMatchTime(match) {
     var start = new Date(match.start*1000);
-    if(match.id == '29') {
+    if(match.id == '57' || match.id == '58') {
         return 'jpr';
     } else if(match.finished == 1) { // finished
         return 'finished';
