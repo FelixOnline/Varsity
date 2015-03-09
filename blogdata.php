@@ -14,7 +14,7 @@ require_once('core/match.class.php');
 
 define('BLOG_POSTS_PER_PAGE', 10);
 
-$blog = new Blog('varsity-2013');
+$blog = new Blog('varsity-2015');
 $output = array(
     'name' => $blog->getName(),
     'sticky' => $blog->getSticky(),

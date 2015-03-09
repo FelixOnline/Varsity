@@ -5,7 +5,7 @@
     require_once('inc/config.inc.php');
     require_once('core/baseModel.class.php');
     require_once('core/blog.class.php');
-    $blog = new Blog('varsity-2013');
+    $blog = new Blog('varsity-2015');
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
