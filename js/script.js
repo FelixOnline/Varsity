@@ -36,8 +36,8 @@ if(!config.static) {
     socket.on('connect', function() {
         $(function() {
             socketstatus
-            .removeClass('disconnected')
-            .addClass('connected')
+            .removeClass('alert')
+            .addClass('success')
             .text('Connected');
         });
     });
@@ -45,8 +45,8 @@ if(!config.static) {
     socket.on('disconnect', function() {
         $(function() {
             socketstatus
-            .removeClass('connected')
-            .addClass('disconnected')
+            .removeClass('success')
+            .addClass('alert')
             .text('Disconnected');
         });
     });

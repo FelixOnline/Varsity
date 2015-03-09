@@ -28,8 +28,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
-    <link rel="stylesheet/less" href="css/bootstrap/bootstrap.less" type="text/css" media="screen" />
-    <link rel="stylesheet/less" href="css/bootstrap/responsive.less" type="text/css" media="screen" />
+    <link rel="stylesheet/less" href="css/foundation.css" type="text/css" media="screen" />
+    <link rel="stylesheet/less" href="css/felix.css" type="text/css" media="screen" />
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,400italic,700italic|Noto+Serif:400,700,400italic,700italic|Sorts+Mill+Goudy:400,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
 
     <!-- Your styles -->
     <link rel="stylesheet/less" href="css/style.less" type="text/css" media="screen" />
@@ -62,55 +65,51 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div class="container">
-        <div id="topBarCont">
+        <div class="felix-header felix-header-sport">
             <div class="row">
-                <div id="topBar" class="span12">
-                    <div class="links first">
-                        <ul class="clearfix">
-                            <li class="first"><a href="<?php echo STANDARD_URL; ?>" class="selected">Felix Online</a></li>
-                            <li><a href="<?php echo STANDARD_URL; ?>media/">Media</a></li>
-                            <li class="last"><a href="<?php echo STANDARD_URL; ?>issuearchive/">Issue Archive</a></li>
-                        </ul>
+                <div class="medium-6 columns felix-header-actions">
+                    <a href="http://www.felixonline.co.uk">Back to Felix Online</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="felix-title felix-title-sport">
+            <div class="row">
+                <div class="medium-8 columns felix-title-logo">
+                    <div>
+                            <img src="img/logo.png" alt=""> 
+                            <h1>Felix Live</h1>
                     </div>
                 </div>
             </div>
         </div>
-        <header>
-            <!-- Begin header main -->
-            <div class="row">
-                <div class="span6 logocont">
-                    <a href="<?php echo STANDARD_URL; ?>">
-                        <div class="logo"> 
-                            <h1>Felix</h1>
-                        </div>
-                    </a>
-                </div>
-                <div class="span4 catPic last hidden-phone">
-                    <!--<img src="../img/felix_cat-small.jpg" width="100px" height="110px"/>-->
-                </div>
-            </div>
-            <!-- End header main -->
-        </header>
 
         <div role="main" id="main">
-            <div id="bg"></div>
+            <div class="row">
+                <div class="medium-12 columns">
+                    <div id="bg"></div>
+                </div>
+            </div>
             <!-- Masthead -->
             <div class="row">
-                <div class="span12">
-                    <div id="masthead" class="clearfix">
+                <div class="small-12 columns">
+                    <div class="masthead">
                         <div class="row">
-                            <div class="socket-info clearfix span6">
-                                <p id="status"></p>
-                                <p id="update">Page updates automatically</p>
-                            </div>
-                            <div class="social-icons clearfix">
-                                <div id="facebook">
-                                    <div class="fb-like" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false" data-font="arial"></div>
+                            <div class="small-6 columns">
+                                <div class="clearfix">
+                                    <div class="socket-info clearfix">
+                                        <p id="status" class="label radius">Connecting, please wait...</p>
+                                        <p id="update" class="label radius secondary">Page updates automatically</p>
+                                    </div>
                                 </div>
-                                <div id="twitter">
-                                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-                                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="clearfix">
+                                    <div id="social-links">
+                                        <div class="fb-like" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false" data-font="arial"></div>
+                                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +120,7 @@
             <div class="row">
             </div>
             <div class="row">
-                <div class="span8">
+                <div class="medium-8 columns">
                     <div class="sticky">
                     <?php if($blog->getSticky()) { ?>
                         <?php echo $blog->getSticky(); ?>
@@ -130,7 +129,7 @@
                     <div class="feed loading">
                     </div>
                 </div>
-                <div class="span4 sidebar">
+                <div class="medium-4 columns sidebar">
                     <h3>Matches</h3>
                     <div class="matchlist">
                         <div id="jpr" class="cont"></div>
@@ -144,19 +143,16 @@
                 </div>
             </div>
         </div>
-        <footer class="row">
-            <div class="footerbg span12">
-                <div class="row">
-                    <div class="span6 alpha">
-                        <img src="../img/title-small.jpg"/>
-                    </div>
-                    <div class="span6 details alpha">
-                        <p>&copy; Felix Imperial MMXIII <a href="#topBarCont">Top of page</a></p>
-                    </div>
+        <div class="felix-footer felix-footer-news">
+            <div class="row">
+                <div class="medium-12 columns text-center">
+                    <div class="felix-nametype"><img alt="" src="img/white logo.png" style="width: 1.5em; height: 1.5em;">&nbsp;Felix</div>
+                    <p><b>Felix</b> • Beit Quad • Prince Consort Road • London • SW7 2BB</p>
+                    <p><b>Email:</b> <a href="mailto:felix@imperial.ac.uk">felix@imperial.ac.uk</a> • <b>Phone:</b> <a href="tel:02075948072">020 7594 8072</a> • <b>Twitter:</b> @<a href="http://www.twitter.com/FelixImperial">FelixImperial</a></p>
+                    <p>Web design by Philippa Skett, Philip Kent, and Jonathan Kim • &copy; Felix Imperial, All Rights Reserved</p>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
     <!-- JavaScript at the bottom for fast page loading -->
 
     <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -164,7 +160,7 @@
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
     <script src="http://platform.twitter.com/widgets.js"></script>
 
-    <script src="http://54.228.65.97:3000/socket.io/socket.io.js"></script>
+    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
     <script src="js/libs/template.js"></script>
     <script src="js/templates/template.js"></script>
 
