@@ -149,7 +149,7 @@
                     <div class="felix-nametype"><img alt="" src="img/white logo.png" style="width: 1.5em; height: 1.5em;">&nbsp;Felix</div>
                     <p><b>Felix</b> • Beit Quad • Prince Consort Road • London • SW7 2BB</p>
                     <p><b>Email:</b> <a href="mailto:felix@imperial.ac.uk">felix@imperial.ac.uk</a> • <b>Phone:</b> <a href="tel:02075948072">020 7594 8072</a> • <b>Twitter:</b> @<a href="http://www.twitter.com/FelixImperial">FelixImperial</a></p>
-                    <p>Web design by Philippa Skett, Philip Kent, and Jonathan Kim • &copy; Felix Imperial, All Rights Reserved</p>
+                    <p>Live blog developed by Philip Kent, and Jonathan Kim • &copy; Felix Imperial, All Rights Reserved</p>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
     <script src="http://platform.twitter.com/widgets.js"></script>
 
-    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+    <script src="http://felix-liveblog.media.su.ic.ac.uk/socket.io/socket.io.js"></script>
     <script src="js/libs/template.js"></script>
     <script src="js/templates/template.js"></script>
 
