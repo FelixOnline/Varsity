@@ -12,3 +12,5 @@ You can put matches in the sidebar by modifying the varsity table - sadly previo
 
 ## Static mode
 So you don't need to run the LiveBlog app all the time once Varsity is over, you can take the JSON output from blogdata.php and put it in the config.js file, as well as turning on static mode.
+
+Static mode can also include match data!
