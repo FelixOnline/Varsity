@@ -10,6 +10,15 @@ Live blog for varsity
 
 You can put matches in the sidebar by modifying the varsity table - sadly previous year's results must be removed while previous blogs can be retained
 
+## Known limitations
+
+* The User model has changed slightly since this code was written so the User class may need updating
+* PHP mysql library is discontinued and should be replaced with mysqli
+
+## Non-varsity blogs
+
+* An old blog for TEDxImperialCollege is in a separate branch - take a look!
+
 ## Static mode
 So you don't need to run the LiveBlog app all the time once Varsity is over, you can take the JSON output from blogdata.php and put it in the config.js file, as well as turning on static mode.
 
